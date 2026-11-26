@@ -1,11 +1,10 @@
-import React from 'react'
-let Count=0
-const count = () => {
+const Count = ({ value, onIncrement }) => {
   return (
     <div>
-      <h1>count: {Count}</h1>
+      <p>Count: {value}</p>
+      <button type="button" onClick={onIncrement}>Increment</button>
     </div>
   )
 }
 
-export default count
+export default Count
