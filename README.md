@@ -52,3 +52,10 @@ lifecycle of react:
     mounting:initial renser/elements added to DOM
     updating:UI changes due to state or pop update
     unmounting:removing from DOM
+react-router DOM:
+     change between component without reload
+props drilling:
+(home->parent->child->greeting)
+for overcoming this using use context
+use context:
+    

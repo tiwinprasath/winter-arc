@@ -16,6 +16,7 @@ const Register = () => {
   })
   const [count, setCount] = useState(0)
   const [submittedData, setSubmittedData] = useState(null)
+  const [formError, setFormError] = useState('')
 
   const handleChange = (event) => {
     const { name, value } = event.target
@@ -24,6 +25,15 @@ const Register = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
+    const result = registerSchema.safeParse(formData)
+
+    if (!result.success) {
+      setFormError(result.error.issues[0]?.message ?? 'Please check the form')
+      setSubmittedData(null)
+      return
+    }
+
+    setFormError('')
     const nextCount = count + 1
     const submission = { ...formData, count: nextCount }
 
@@ -47,6 +57,7 @@ const Register = () => {
         <br />
         <button type="submit">Submit</button>
       </form>
+      {formError && <p role="alert">{formError}</p>}
 
       <Count
         value={count}
